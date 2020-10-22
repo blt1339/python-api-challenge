@@ -3,9 +3,17 @@
 
 # Background
 [Project Details](project_instructions_readme.md)
+
+# Setup Instructions
+In order to run these programs, a file called api_keys.py needs to be created in both WeatherPy and VacationPy with your OpenWeather and Google maps api keys updated using the following formation:
+
+weather_api_key = ""
+
+g_key = ""
+
  
 ## Observations and Insights 
-* The only comparison that has a strong correlation is Latitude and Max Temperature.  The further someone is away from the equator to the south, the lower the temperature. And conversely the further north from the equator the higher the temperature.
+* The only comparison that has a strong or moderate correlation is Latitude and Max Temperature.  The further someone is away from the equator to the south, the lower the temperature. And conversely the further north from the equator the higher the temperature.
 * There are quite a few points where the humitity is higher for locations  south of the equator and north of the equator but there are also quite a few points that do not exhibit this behavior. So any correlection would be "weak" or "none or very weak". And indeed that is the results that was  obtained from linear regression of the hemisphere data.  Therefore no conclusions can be drawn for humidity from latitude.
 * The cloudiness points are distributed over the entire plot.  Therefore there would be "none or very weak" correletion between latitude and Cloudiness.  And indeed that is what was discovered via linear regression.
 * Most of the Wind Speed points are less than 20 mph with very few outliers.  There is not any correletion between Wind Speed and Latitude. 
@@ -32,7 +40,7 @@ import random
 from scipy.stats import linregress
 
 # Google API Key
-from api_keys import g_key
+from api_keys import weather_api_key
 
 #random.seed(333)
 ```
@@ -99,7 +107,7 @@ city_wind_speed = []
 
 
 # Build partial query URL
-query_url = f"{base_url}appid={g_key}&units={units}&q="
+query_url = f"{base_url}appid={weather_api_key}&units={units}&q="
 
 # Initialize our loop variables
 city_cntr = -1
